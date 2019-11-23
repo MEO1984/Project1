@@ -1,0 +1,64 @@
+<DOCTYPE html>
+<head>
+
+</head>
+
+<body>
+
+    <div id="input"></div>
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <script type="text/javascript">
+        
+        function test() {
+        
+        
+        
+        var queryUrl = "https://app.ticketmaster.com/discovery/v2/events.json?city=new york&segmentName=Music&apikey=db4iTGExqTBzTMvyBMO63edGOsMUS9EU";
+
+        $.ajax({
+            url: queryUrl,
+            method: "GET",
+            crossDomain: true,
+        }).then(function(response) {
+            //console.log(response);
+            //console.log(response._embedded.events[0]._embedded.venues[0].name);
+            //set as variable for venue moving forward
+            
+            for (var i= 0; i< 10; i++){
+                var one = response._embedded.events[i]._embedded.venues[0].name;
+                console.log(one);
+        }})
+            //var two = response._embedded.events[1]._embedded.venues[0].name;
+            //var three = response._embedded.events[2]._embedded.venues[0].name;
+            //var four = response._embedded.events[3]._embedded.venues[0].name;
+            //var five = response._embedded.events[4]._embedded.venues[0].name;
+            //var six = response._embedded.events[5]._embedded.venues[0].name;
+            //var seven = response._embedded.events[6]._embedded.venues[0].name;
+            //var eight = response._embedded.events[7]._embedded.venues[0].name;
+            //var nine = response._embedded.events[8]._embedded.venues[0].name;
+            //var ten = response._embedded.events[9]._embedded.venues[0].name;
+            
+            //var responseArray = [one, two, three, four, five, six, seven, eight, nine, ten];
+            //console.log(responseArray);
+            
+            //for (var i = 0; i < 10; i++) {
+                //console.log(responseArray[i]);
+                
+            }
+
+
+            
+        // );
+        
+    
+            
+        
+        test();
+        
+        </script>
+
+
+
+
+</body>
