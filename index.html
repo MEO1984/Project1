@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Simple Map</title>
+    <meta name="viewport" content="initial-scale=1.0">
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="style.css">
+  </head>
+  <body>
+      <div id="floating-panel">
+          <!-- <strong>Start:</strong> -->
+          <input id="start" hidden>
+          </input>
+          <br>
+          <strong>Event location:</strong>
+          <input id="end">
+      
+          </input>
+        </div>
+        <div id="right-panel"></div>
+       
+        <div id="map"></div>
+        <p id="demo"></p> 
+
+    <script src="script.js">
+     
+    </script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCcXxbkJoA_-cvQs6DCxiSZ_5vbsIDuNw8&callback=initMap"
+    async defer></script>
+  </body>
+</html>
