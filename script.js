@@ -1,4 +1,4 @@
-var searchBtn = document.querySelector('.click');
+var searchBtn = document.querySelector('#click');
 var searchInput = document.querySelector('#inputSearch')
 var city = "Pittsburgh";
 var tester = document.querySelector("#theImg1");
@@ -14,7 +14,7 @@ function test() {
     }).then(function (response) {
         console.log(response);
 
-        document.querySelector('#eventHeader').textContent += "Events in  " + city;
+        document.querySelector('#eventHeader').textContent = "Events in  " + city;
         for (var j = 0; j < 19; j++) {
             var div = document.createElement('div');
             div.setAttribute('class', "divider");
@@ -51,14 +51,7 @@ function test() {
 }
 // test();
 
-searchBtn.addEventListener("click", function (event) {
 
-    event.preventDefault();
-
-    city = inputSearch.value;
-    console.log(city);
-
-});
 
 function test2() {
 
@@ -77,7 +70,7 @@ function test2() {
     )
 };
 
-// test2();
+test2();
 
 function test3() {
 
@@ -92,17 +85,17 @@ function test3() {
         var sport1 = document.querySelector(".sport1");
         console.log(sport1);
         document.querySelector(".sport1").firstChild.setAttribute("src", response._embedded.events[0].images[0].url);
-        document.querySelector("#sport1a").firstChild.textContent += response._embedded.events[0].name;
+        document.querySelector("#sport1a").firstChild.textContent = response._embedded.events[0].name;
         document.querySelector(".sport2").firstChild.setAttribute("src", response._embedded.events[2].images[0].url);
-        document.querySelector("#sport2a").firstChild.textContent += response._embedded.events[2].name;
+        document.querySelector("#sport2a").firstChild.textContent = response._embedded.events[2].name;
         document.querySelector(".sport3").firstChild.setAttribute("src", response._embedded.events[4].images[0].url);
-        document.querySelector("#sport3a").firstChild.textContent += response._embedded.events[4].name;
+        document.querySelector("#sport3a").firstChild.textContent = response._embedded.events[4].name;
         document.querySelector(".sport4").firstChild.setAttribute("src", response._embedded.events[6].images[0].url);
-        document.querySelector("#sport4a").firstChild.textContent += response._embedded.events[6].name;
+        document.querySelector("#sport4a").firstChild.textContent = response._embedded.events[6].name;
         document.querySelector(".sport5").firstChild.setAttribute("src", response._embedded.events[8].images[0].url);
-        document.querySelector("#sport5a").firstChild.textContent += response._embedded.events[8].name;
+        document.querySelector("#sport5a").firstChild.textContent = response._embedded.events[8].name;
         document.querySelector(".sport6").firstChild.setAttribute("src", response._embedded.events[10].images[0].url);
-        document.querySelector("#sport6a").firstChild.textContent += response._embedded.events[10].name;
+        document.querySelector("#sport6a").firstChild.textContent = response._embedded.events[10].name;
     }
     )
 };
@@ -120,17 +113,17 @@ function test4() {
         console.log(response);
 
         document.querySelector(".concert1").firstChild.setAttribute("src", response._embedded.events[0].images[0].url);
-        document.querySelector("#concert1a").firstChild.textContent += response._embedded.events[0].name;
+        document.querySelector("#concert1a").firstChild.textContent = response._embedded.events[0].name;
         document.querySelector(".concert2").firstChild.setAttribute("src", response._embedded.events[2].images[0].url);
-        document.querySelector("#concert2a").firstChild.textContent += response._embedded.events[2].name;
+        document.querySelector("#concert2a").firstChild.textContent = response._embedded.events[2].name;
         document.querySelector(".concert3").firstChild.setAttribute("src", response._embedded.events[4].images[0].url);
-        document.querySelector("#concert3a").firstChild.textContent += response._embedded.events[4].name;
+        document.querySelector("#concert3a").firstChild.textContent = response._embedded.events[4].name;
         document.querySelector(".concert4").firstChild.setAttribute("src", response._embedded.events[6].images[0].url);
-        document.querySelector("#concert4a").firstChild.textContent += response._embedded.events[6].name;
+        document.querySelector("#concert4a").firstChild.textContent = response._embedded.events[6].name;
         document.querySelector(".concert5").firstChild.setAttribute("src", response._embedded.events[8].images[0].url);
-        document.querySelector("#concert5a").firstChild.textContent += response._embedded.events[8].name;
+        document.querySelector("#concert5a").firstChild.textContent = response._embedded.events[8].name;
         document.querySelector(".concert6").firstChild.setAttribute("src", response._embedded.events[10].images[0].url);
-        document.querySelector("#concert6a").firstChild.textContent += response._embedded.events[10].name;
+        document.querySelector("#concert6a").firstChild.textContent = response._embedded.events[10].name;
 
 
         }
@@ -141,4 +134,50 @@ function test4() {
 
 
 
-test4();
+// test4();
+
+var startScreenContainer = document.querySelector(".startscreen");
+var sportsContainer = document.querySelector(".sports");
+var sportButton = document.querySelector("#sportButton");
+var concertButton =document.querySelector("#concertButton");
+var concertContainer = document.querySelector(".concerts");
+var input = document.querySelector("#newCity");
+var searchListContainer = document.querySelector('.searchList')
+
+sportButton.addEventListener("click", function (event) {
+
+    event.preventDefault();
+    sportsContainer.classList.remove('hidden');
+    startScreenContainer.classList.add('hidden');
+    concertContainer.classList.add('hidden');
+    searchListContainer.classList.add('hidden');
+    test3();
+    
+
+});
+
+concertButton.addEventListener("click", function (event) {
+
+    event.preventDefault();
+    sportsContainer.classList.add('hidden');
+    concertContainer.classList.remove('hidden');
+    startScreenContainer.classList.add('hidden');
+    searchListContainer.classList.add('hidden');
+    test4();
+    
+
+});
+
+searchBtn.addEventListener("click", function (event) {
+
+    event.preventDefault();
+
+    city = input.value;
+    console.log(city);
+    sportsContainer.classList.add('hidden');
+    concertContainer.classList.add('hidden');
+    startScreenContainer.classList.add('hidden');
+    searchListContainer.classList.remove('hidden');
+    test();
+
+});
