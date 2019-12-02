@@ -3,7 +3,12 @@ var searchInput = document.querySelector('#inputSearch')
 var city = "Pittsburgh";
 var tester = document.querySelector("#theImg1");
 var searchResult2 = document.querySelector("#section2");
+var list = document.querySelector(".list");
+var keyword = "";
+var searchBtn2 = document.querySelector('#click2');
 
+
+// function makes list of events based on city input
 function test() {
 
     var queryUrl = "https://app.ticketmaster.com/discovery/v2/events.json?city=" + city + "&segmentName=Music&apikey=db4iTGExqTBzTMvyBMO63edGOsMUS9EU";
@@ -13,9 +18,14 @@ function test() {
         crossDomain: true,
     }).then(function (response) {
         console.log(response);
+        $('.divider').remove();
+        $('.section').remove();
 
         document.querySelector('#eventHeader').textContent = "Events in  " + city;
         for (var j = 0; j < 19; j++) {
+
+
+
             var div = document.createElement('div');
             div.setAttribute('class', "divider");
             var div2 = document.createElement('div');
@@ -25,34 +35,34 @@ function test() {
             section.setAttribute('class', 'section');
             var h5 = document.createElement("h5");
             h5.textContent = response._embedded.events[j].name;
+            var p = document.createElement("p");
+            p.textContent = moment(response._embedded.events[j].dates.start.localDate).format("MMM Do YYYY");
+            p.setAttribute('id', 'eventDetails');
             var button = document.createElement('button');
             button.setAttribute('class', 'buttonID');
-            // button.setAttribute('class', "eventSelect");
             button.textContent = "Event Details";
             var img = document.createElement("img");
             img.src = (response._embedded.events[j].images[0].url);
 
 
 
-            document.querySelector(".list").appendChild(div).parentNode.appendChild(section).appendChild(div3).appendChild(h5).parentNode.appendChild(button).parentNode.parentNode.appendChild(div2).appendChild(img)
+            document.querySelector(".list").appendChild(div).parentNode.appendChild(section).appendChild(div3).appendChild(h5).parentNode.appendChild(p).parentNode.appendChild(button).parentNode.parentNode.appendChild(div2).appendChild(img)
+
+
 
 
         }
 
 
-        for (var i = 0; i < 10; i++) {
-            var one = response._embedded.events[i]._embedded.venues[0].name;
-            console.log(one);
-        }
     })
 
 
 
 }
-// test();
 
 
 
+// pulls pictures for start screen
 function test2() {
 
     var queryUrl = "https://app.ticketmaster.com/discovery/v2/events.json?&city=New York&segmentName=Music&apikey=db4iTGExqTBzTMvyBMO63edGOsMUS9EU";
@@ -72,6 +82,7 @@ function test2() {
 
 test2();
 
+// pulls information and creates view of sports on click of sports on navbar
 function test3() {
 
     var queryUrl = "https://app.ticketmaster.com/discovery/v2/events.json?segmentName=Sports&apikey=db4iTGExqTBzTMvyBMO63edGOsMUS9EU";
@@ -100,8 +111,8 @@ function test3() {
     )
 };
 
-// test3();
 
+// pulls information and creates view of concertss on click of concerts on navbar
 function test4() {
 
     var queryUrl = "https://app.ticketmaster.com/discovery/v2/events.json?&city=New York&segmentName=Music&apikey=db4iTGExqTBzTMvyBMO63edGOsMUS9EU";
@@ -126,24 +137,25 @@ function test4() {
         document.querySelector("#concert6a").firstChild.textContent = response._embedded.events[10].name;
 
 
-        }
-
-
-        
-    )}
+    }
 
 
 
-// test4();
+    )
+}
 
+// set up some vars
 var startScreenContainer = document.querySelector(".startscreen");
 var sportsContainer = document.querySelector(".sports");
 var sportButton = document.querySelector("#sportButton");
-var concertButton =document.querySelector("#concertButton");
+var concertButton = document.querySelector("#concertButton");
 var concertContainer = document.querySelector(".concerts");
 var input = document.querySelector("#newCity");
 var searchListContainer = document.querySelector('.searchList')
+var input2 = document.querySelector("#newKeyword");
 
+
+// event listener for sport button on navbar
 sportButton.addEventListener("click", function (event) {
 
     event.preventDefault();
@@ -152,10 +164,10 @@ sportButton.addEventListener("click", function (event) {
     concertContainer.classList.add('hidden');
     searchListContainer.classList.add('hidden');
     test3();
-    
+
 
 });
-
+//  event listener for concert on navbar
 concertButton.addEventListener("click", function (event) {
 
     event.preventDefault();
@@ -164,10 +176,12 @@ concertButton.addEventListener("click", function (event) {
     startScreenContainer.classList.add('hidden');
     searchListContainer.classList.add('hidden');
     test4();
-    
+
+
 
 });
 
+// event listener for city searchbar
 searchBtn.addEventListener("click", function (event) {
 
     event.preventDefault();
@@ -181,3 +195,63 @@ searchBtn.addEventListener("click", function (event) {
     test();
 
 });
+
+// event listener for keyword searchbar
+searchBtn2.addEventListener("click", function (event) {
+
+    event.preventDefault();
+    keyword = input2.value;
+
+    console.log(keyword);
+    sportsContainer.classList.add('hidden');
+    concertContainer.classList.add('hidden');
+    startScreenContainer.classList.add('hidden');
+    searchListContainer.classList.remove('hidden');
+    test5();
+
+});
+
+// creates list for keyword search results
+function test5() {
+
+    var queryUrl = "https://app.ticketmaster.com/discovery/v2/events.json?keyword=" + keyword + "&apikey=db4iTGExqTBzTMvyBMO63edGOsMUS9EU";
+    $.ajax({
+        url: queryUrl,
+        method: "GET",
+        crossDomain: true,
+    }).then(function (response) {
+        console.log(response);
+        $('.divider').remove();
+        $('.section').remove();
+
+        document.querySelector('#eventHeader').textContent = "Results for  " + keyword;
+        for (var j = 0; j < 19; j++) {
+
+
+            console.log(response);
+            var div = document.createElement('div');
+            div.setAttribute('class', "divider");
+            var div2 = document.createElement('div');
+            var div3 = document.createElement('div');
+            div3.setAttribute('class', "col m6")
+            var section = document.createElement('section');
+            section.setAttribute('class', 'section');
+            var h5 = document.createElement("h5");
+            h5.textContent = response._embedded.events[j].name;
+            var p = document.createElement("p");
+            p.textContent = moment(response._embedded.events[j].dates.start.localDate).format("MMM Do YYYY");
+            p.setAttribute('id', 'eventDetails');
+            var button = document.createElement('button');
+            button.setAttribute('class', 'buttonID');
+            button.textContent = "Event Details";
+            var img = document.createElement("img");
+            img.src = (response._embedded.events[j].images[0].url);
+
+
+
+            document.querySelector(".list").appendChild(div).parentNode.appendChild(section).appendChild(div3).appendChild(h5).parentNode.appendChild(p).parentNode.appendChild(button).parentNode.parentNode.appendChild(div2).appendChild(img)
+
+
+        }
+    })
+}
