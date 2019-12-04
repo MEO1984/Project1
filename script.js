@@ -42,7 +42,9 @@ function test() {
 
             var button =document.createElement('a');
             button.setAttribute('class','wave-effect waves-light btn modal-trigger buttonID');
-            button.setAttribute('data-target', "#modal1");
+            button.setAttribute('href', "#modal1");
+            button.text = "More Event Details";
+            button.setAttribute('data-info', j);
             console.log("buttonclicked");
             
 
@@ -54,13 +56,19 @@ function test() {
             img.src = (response._embedded.events[j].images[0].url);
 
 
-
+            console.log(j)
             document.querySelector(".list").appendChild(div).parentNode.appendChild(section).appendChild(div3).appendChild(h5).parentNode.appendChild(p).parentNode.appendChild(button).parentNode.parentNode.appendChild(div2).appendChild(img)
 
-
-
+            
+            $('#pageHeader').text(response._embedded.events[work].name);
+            $('#date').text(moment(response._embedded.events[work].dates.start.localDate).format("MMM Do YYYY"));
+            $('#price').text(response._embedded.events[work].priceRanges[0].min);
+            // $(".modal-content").text(response._embedded.events[work].dates.start.localDate)
+            // $(".modal-content").firstChild.text(response._embedded.events[work].priceRanges[0].min)
+            // $(".modal-content").text(response._embedded.events[work].priceRanges[0].max)
 
         }
+        
 
 
     })
@@ -264,6 +272,7 @@ function test5() {
 
             document.querySelector(".list").appendChild(div).parentNode.appendChild(section).appendChild(div3).appendChild(h5).parentNode.appendChild(p).parentNode.appendChild(button).parentNode.parentNode.appendChild(div2).appendChild(img)
 
+            
 
         }
     })
@@ -360,33 +369,19 @@ $(document).on("click", "#directions", function (event) {
     test();
 });
 
-var directionsContainer = document.querySelector(".directions");
-$(document).on("click", ".buttonID", function (event) {
-    
-   
-    // sportsContainer.classList.add('hidden');
-    // concertContainer.classList.add('hidden');
-    // startScreenContainer.classList.add('hidden');
-    // searchListContainer.classList.add('hidden');
-    // directionsContainer.classList.remove('hidden');
-    var elems = document.querySelectorAll('.modal');
+
+
+var elems = document.querySelectorAll('.modal');
     var instances = M.Modal.init(elems);
+
+    var directionsContainer = document.querySelector(".directions");
+    $(document).on("click", ".buttonID", function (event) {
+        
+       test();
+       work = $(this).attr('data-info');
+        console.log(work);
+        
+       
     
-    console.log(click);
+    });  
 
-});
-
-
-
-// document.addEventListener('click', function() {
-//     var elems = document.querySelectorAll('.modal');
-//     var instances = M.Modal.init(elems, options);
-//     $('#modal1').classList.remove('hidden');
-//     console.log(click);
-//   });
-
-  // Or with jQuery
-
-//   $(document).ready(function(){
-//     $('.modal').modal();
-//   });
