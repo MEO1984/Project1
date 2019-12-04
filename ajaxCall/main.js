@@ -8,7 +8,9 @@ var keyword = "";
 var searchBtn2 = document.querySelector('#click2');
 var ticketUrl = "";
 var destination = "";
+var finalDestination = document.querySelector("#end");
 var buyTickets = document.querySelector('#priceBtn');
+var getDirections = document.querySelector('#directions')
 
 
 // function makes list of events based on city input
@@ -287,7 +289,7 @@ $(document).on("click", ".buttonID", function (event) {
     destination =$(this).attr('data-dest');
     ticketUrl = $(this).attr('data-url');
     localStorage.setItem('ticketUrl',ticketUrl);
-    localStorage.setItem("dest",destination);
+    localStorage.setItem('dest',destination);
     console.log(ticketUrl);
     console.log(destination);
 });
@@ -297,7 +299,7 @@ $(document).ready(function () {
         $(buyTickets).on("click", function (event) {
             console.log("click");
             event.preventDefault();
-            event.stopPropagation();
+           
           ticketUrl = localStorage.getItem("ticketUrl");
             window.location.href = ticketUrl;
             console.log(ticketUrl);
@@ -305,4 +307,16 @@ $(document).ready(function () {
         })
     }
 });
+$(document).ready(function(){
+    if (getDirections ) {
+        $(getDirections).on('click', function(event){
+            event.preventDefault();
+            var d = localStorage.getItem('dest')
+            $(finalDestination).attr("value", d)
+            
+            // finalDestination.val(d)  ;
+            console.log(finalDestination);
+        })
+    }
+})
 
