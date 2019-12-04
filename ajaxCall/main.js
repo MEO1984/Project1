@@ -7,6 +7,7 @@ var list = document.querySelector(".list");
 var keyword = "";
 var searchBtn2 = document.querySelector('#click2');
 var ticketUrl = "";
+var destination = "";
 var buyTickets = document.querySelector('#priceBtn');
 
 
@@ -26,7 +27,7 @@ function test() {
         document.querySelector('#eventHeader').textContent = "Events in  " + city;
         for (var j = 0; j < 19; j++) {
 
-
+        //    console.log(response._embedded.events[j]._embedded.venues[0].name);
 
             var div = document.createElement('div');
             div.setAttribute('class', "divider");
@@ -42,7 +43,7 @@ function test() {
             p.setAttribute('id', 'eventDetails');
             var button = document.createElement('button');
             button.setAttribute('class', 'buttonID');
-            button.setAttribute('data-info', j)
+            button.setAttribute('data-dest',response._embedded.events[j]._embedded.venues[0].name);
             button.setAttribute('data-url', response._embedded.events[j].url);
             button.textContent = "Event Details";
             var img = document.createElement("img");
@@ -129,7 +130,6 @@ function test3() {
     )
 };
 
-
 // pulls information and creates view of concertss on click of concerts on navbar
 function test4() {
 
@@ -154,10 +154,7 @@ function test4() {
         document.querySelector(".concert6").firstChild.setAttribute("src", response._embedded.events[10].images[0].url);
         document.querySelector("#concert6a").firstChild.textContent = response._embedded.events[10].name;
 
-
     }
-
-
 
     )
 }
@@ -287,8 +284,12 @@ $(document).on("click", ".buttonID", function (event) {
     console.log("click");
     event.preventDefault();
     location.href = "../envent_P.html"
+    destination =$(this).attr('data-dest');
     ticketUrl = $(this).attr('data-url');
+    localStorage.setItem('ticketUrl',ticketUrl);
+    localStorage.setItem("dest",destination);
     console.log(ticketUrl);
+    console.log(destination);
 });
 $(document).ready(function () {
     if (buyTickets) {
@@ -297,6 +298,7 @@ $(document).ready(function () {
             console.log("click");
             event.preventDefault();
             event.stopPropagation();
+          ticketUrl = localStorage.getItem("ticketUrl");
             window.location.href = ticketUrl;
             console.log(ticketUrl);
 
