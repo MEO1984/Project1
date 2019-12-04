@@ -20,12 +20,13 @@ function test() {
         console.log(response);
         $('.divider').remove();
         $('.section').remove();
+    
 
         document.querySelector('#eventHeader').textContent = "Events in  " + city;
         for (var j = 0; j < 19; j++) {
 
 
-
+            // button.setAttribute("data-info",j);
             var div = document.createElement('div');
             div.setAttribute('class', "divider");
             var div2 = document.createElement('div');
@@ -38,9 +39,17 @@ function test() {
             var p = document.createElement("p");
             p.textContent = moment(response._embedded.events[j].dates.start.localDate).format("MMM Do YYYY");
             p.setAttribute('id', 'eventDetails');
-            var button = document.createElement('button');
-            button.setAttribute('class', 'buttonID');
-            button.textContent = "Event Details";
+
+            var button =document.createElement('a');
+            button.setAttribute('class','wave-effect waves-light btn modal-trigger buttonID');
+            button.setAttribute('data-target', "#modal1");
+            console.log("buttonclicked");
+            
+
+
+            // var button = document.createElement('button');
+            // button.setAttribute('class', 'buttonID');
+            // button.textContent = "Event Details";
             var img = document.createElement("img");
             img.src = (response._embedded.events[j].images[0].url);
 
@@ -163,7 +172,7 @@ sportButton.addEventListener("click", function (event) {
     startScreenContainer.classList.add('hidden');
     concertContainer.classList.add('hidden');
     searchListContainer.classList.add('hidden');
-    directionsContainer.classList.remove('hidden');
+    directionsContainer.classList.add('hidden');
     test3();
 
 
@@ -176,7 +185,7 @@ concertButton.addEventListener("click", function (event) {
     concertContainer.classList.remove('hidden');
     startScreenContainer.classList.add('hidden');
     searchListContainer.classList.add('hidden');
-    directionsContainer.classList.remove('hidden');
+    directionsContainer.classList.add('hidden');
     test4();
 
 
@@ -194,7 +203,7 @@ searchBtn.addEventListener("click", function (event) {
     concertContainer.classList.add('hidden');
     startScreenContainer.classList.add('hidden');
     searchListContainer.classList.remove('hidden');
-    directionsContainer.classList.remove('hidden');
+    directionsContainer.classList.add('hidden');
     test();
 
 });
@@ -210,7 +219,7 @@ searchBtn2.addEventListener("click", function (event) {
     concertContainer.classList.add('hidden');
     startScreenContainer.classList.add('hidden');
     searchListContainer.classList.remove('hidden');
-    directionsContainer.classList.remove('hidden');
+    directionsContainer.classList.add('hidden');
     test5();
 
 });
@@ -353,12 +362,31 @@ $(document).on("click", "#directions", function (event) {
 
 var directionsContainer = document.querySelector(".directions");
 $(document).on("click", ".buttonID", function (event) {
-
-    sportsContainer.classList.add('hidden');
-    concertContainer.classList.add('hidden');
-    startScreenContainer.classList.add('hidden');
-    searchListContainer.classList.add('hidden');
-    directionsContainer.classList.remove('hidden');
+    
    
+    // sportsContainer.classList.add('hidden');
+    // concertContainer.classList.add('hidden');
+    // startScreenContainer.classList.add('hidden');
+    // searchListContainer.classList.add('hidden');
+    // directionsContainer.classList.remove('hidden');
+    var elems = document.querySelectorAll('.modal');
+    var instances = M.Modal.init(elems);
+    
+    console.log(click);
 
 });
+
+
+
+// document.addEventListener('click', function() {
+//     var elems = document.querySelectorAll('.modal');
+//     var instances = M.Modal.init(elems, options);
+//     $('#modal1').classList.remove('hidden');
+//     console.log(click);
+//   });
+
+  // Or with jQuery
+
+//   $(document).ready(function(){
+//     $('.modal').modal();
+//   });
