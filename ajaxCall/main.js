@@ -6,6 +6,8 @@ var searchResult2 = document.querySelector("#section2");
 var list = document.querySelector(".list");
 var keyword = "";
 var searchBtn2 = document.querySelector('#click2');
+var ticketUrl = "";
+var buyTickets = document.querySelector('#priceBtn');
 
 
 // function makes list of events based on city input
@@ -40,10 +42,16 @@ function test() {
             p.setAttribute('id', 'eventDetails');
             var button = document.createElement('button');
             button.setAttribute('class', 'buttonID');
+            button.setAttribute('data-info', j)
+            button.setAttribute('data-url', response._embedded.events[j].url);
             button.textContent = "Event Details";
             var img = document.createElement("img");
             img.src = (response._embedded.events[j].images[0].url);
+            // $(button).on("click",function (event){
 
+            //     window.location.href = "../envent_P.html";
+
+            // });
 
 
             document.querySelector(".list").appendChild(div).parentNode.appendChild(section).appendChild(div3).appendChild(h5).parentNode.appendChild(p).parentNode.appendChild(button).parentNode.parentNode.appendChild(div2).appendChild(img)
@@ -71,11 +79,21 @@ function test2() {
         method: "GET",
         crossDomain: true,
     }).then(function (response) {
-        console.log(response);
-        console.log(response._embedded.events[0].images[0].url);
-        document.querySelector(".large1").setAttribute("src", response._embedded.events[0].images[0].url);
-        document.querySelector(".small1").setAttribute("src", response._embedded.events[6].images[0].url);
-        document.querySelector(".small2").setAttribute("src", response._embedded.events[10].images[0].url);
+        // console.log(response);
+        // console.log(response._embedded.events[0].images[0].url);
+        var imgA = document.querySelector(".large1");
+        var imgB = document.querySelector(".small1");
+        var imgC = document.querySelector(".small2");
+        if (imgA) {
+            imgA.setAttribute("src", response._embedded.events[0].images[0].url);
+        }
+        if (imgB) {
+            imgB.setAttribute("src", response._embedded.events[6].images[0].url);
+        }
+        if (imgC) {
+            imgC.setAttribute("src", response._embedded.events[10].images[0].url);
+        }
+
     }
     )
 };
@@ -156,60 +174,69 @@ var input2 = document.querySelector("#newKeyword");
 
 
 // event listener for sport button on navbar
-sportButton.addEventListener("click", function (event) {
+if (sportButton) {
+    sportButton.addEventListener("click", function (event) {
 
-    event.preventDefault();
-    sportsContainer.classList.remove('hidden');
-    startScreenContainer.classList.add('hidden');
-    concertContainer.classList.add('hidden');
-    searchListContainer.classList.add('hidden');
-    test3();
+        event.preventDefault();
+        sportsContainer.classList.remove('hidden');
+        startScreenContainer.classList.add('hidden');
+        concertContainer.classList.add('hidden');
+        searchListContainer.classList.add('hidden');
+        test3();
 
 
-});
+    })
+};
 //  event listener for concert on navbar
-concertButton.addEventListener("click", function (event) {
+if (concertButton) {
+    concertButton.addEventListener("click", function (event) {
 
-    event.preventDefault();
-    sportsContainer.classList.add('hidden');
-    concertContainer.classList.remove('hidden');
-    startScreenContainer.classList.add('hidden');
-    searchListContainer.classList.add('hidden');
-    test4();
+        event.preventDefault();
+        sportsContainer.classList.add('hidden');
+        concertContainer.classList.remove('hidden');
+        startScreenContainer.classList.add('hidden');
+        searchListContainer.classList.add('hidden');
+        test4();
 
 
 
-});
+    })
+};
 
 // event listener for city searchbar
-searchBtn.addEventListener("click", function (event) {
+if (searchBtn) {
+    searchBtn.addEventListener("click", function (event) {
 
-    event.preventDefault();
+        event.preventDefault();
 
-    city = input.value;
-    console.log(city);
-    sportsContainer.classList.add('hidden');
-    concertContainer.classList.add('hidden');
-    startScreenContainer.classList.add('hidden');
-    searchListContainer.classList.remove('hidden');
-    test();
+        city = input.value;
+        console.log(city);
+        sportsContainer.classList.add('hidden');
+        concertContainer.classList.add('hidden');
+        startScreenContainer.classList.add('hidden');
+        searchListContainer.classList.remove('hidden');
+        test();
 
-});
+    })
+};
 
 // event listener for keyword searchbar
-searchBtn2.addEventListener("click", function (event) {
+if (searchBtn2) {
 
-    event.preventDefault();
-    keyword = input2.value;
+    searchBtn2.addEventListener("click", function (event) {
 
-    console.log(keyword);
-    sportsContainer.classList.add('hidden');
-    concertContainer.classList.add('hidden');
-    startScreenContainer.classList.add('hidden');
-    searchListContainer.classList.remove('hidden');
-    test5();
+        event.preventDefault();
+        keyword = input2.value;
 
-});
+        console.log(keyword);
+        sportsContainer.classList.add('hidden');
+        concertContainer.classList.add('hidden');
+        startScreenContainer.classList.add('hidden');
+        searchListContainer.classList.remove('hidden');
+        test5();
+
+    })
+};
 
 // creates list for keyword search results
 function test5() {
@@ -256,8 +283,24 @@ function test5() {
     })
 }
 
-$(document).on("click",".buttonID", function(event){
+$(document).on("click", ".buttonID", function (event) {
+    console.log("click");
+    event.preventDefault();
+    location.href = "../envent_P.html"
+    ticketUrl = $(this).attr('data-url');
+    console.log(ticketUrl);
+});
+$(document).ready(function () {
+    if (buyTickets) {
 
-        location.href = "../envent_P.html";
+        $(buyTickets).on("click", function (event) {
+            console.log("click");
+            event.preventDefault();
+            event.stopPropagation();
+            window.location.href = ticketUrl;
+            console.log(ticketUrl);
+
+        })
+    }
 });
 
