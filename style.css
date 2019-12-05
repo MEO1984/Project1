@@ -187,7 +187,7 @@ h5{
         margin: 0 auto;
       }
       #floating-panel {
-        /* position: relative; */
+        /* position: absolute; */
         top: 10px;
         left: 25%;
         z-index: 5;
@@ -226,8 +226,12 @@ h5{
         overflow: auto;
       }
       #map {
-        position: relative;
+        /* position: absolute; */
+        top: 0%;
         margin-right: 400px;
+
+       
+        
       }
     
       @media print {
