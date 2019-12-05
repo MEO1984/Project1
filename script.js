@@ -53,7 +53,9 @@ function test() {
             button.setAttribute('data-info', j);
             console.log("buttonclicked");
 
-
+            
+            button.setAttribute('data-dest', response._embedded.events[j]._embedded.venues[0].name);
+            button.setAttribute('data-url', response._embedded.events[j].url);
 
             // var button = document.createElement('button');
             // button.setAttribute('class', 'buttonID');
@@ -404,8 +406,8 @@ function calculateAndDisplayRoute(directionsService, directionsRenderer) {
 }
 
 $(document).on("click", "#directions", function (event) {
-    location.href = "./index.html";
-    test();
+    // location.href = "./index.html";
+    // test();
 });
 
 

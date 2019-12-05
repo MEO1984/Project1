@@ -14,8 +14,8 @@
 
 <body>
     <div class="">
-        <div id="floating-panel">
-            <strong>Start:</strong>
+        <div id="floating-panel" width= 50%>
+            <strong></strong>
             <input id="start" hidden>
             </input>
             <br>
@@ -24,6 +24,17 @@
 
             </input>
         </div>
+        <div class="card-action">
+            Click to get directions from your current location!
+            <br>
+            <br>
+            <button id="directions" class="btn waves-effect waves-light" name="action">Get directions
+                <i class="material-icons right">▶️</i>
+            </button>
+            <br>
+            <br>
+
+        </div>
         <div id="right-panel"></div>
 
         <div id="map"></div>
@@ -31,10 +42,10 @@
     </div>
 
 
-    
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCcXxbkJoA_-cvQs6DCxiSZ_5vbsIDuNw8&callback=initMap"
-    async defer></script>
+        async defer></script>
     <script src="script.js"></script>
 </body>
 
