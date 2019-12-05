@@ -8,9 +8,12 @@ var keyword = "";
 var searchBtn2 = document.querySelector('#click2');
 var ticketUrl = "";
 var destination = "";
+var image = "";
 var finalDestination = document.querySelector("#end");
 var buyTickets = document.querySelector('#priceBtn');
-var getDirections = document.querySelector('#directions')
+var getDirections = document.querySelector('#directions');
+var imgJ = document.querySelector('#imgDetail');
+
 
 
 // function makes list of events based on city input
@@ -23,6 +26,7 @@ function test() {
         crossDomain: true,
     }).then(function (response) {
         console.log(response);
+        
         $('.divider').remove();
         $('.section').remove();
 
@@ -30,7 +34,8 @@ function test() {
         for (var j = 0; j < 19; j++) {
 
         //    console.log(response._embedded.events[j]._embedded.venues[0].name);
-
+            console.log(response._embedded.events[j].name);
+            console.log(response._embedded.events[j]._embedded.venues[0].generalInfo);
             var div = document.createElement('div');
             div.setAttribute('class', "divider");
             var div2 = document.createElement('div');
@@ -47,6 +52,7 @@ function test() {
             button.setAttribute('class', 'buttonID');
             button.setAttribute('data-dest',response._embedded.events[j]._embedded.venues[0].name);
             button.setAttribute('data-url', response._embedded.events[j].url);
+            button.setAttribute('data-image',response._embedded.events[j].images[0].url);
             button.textContent = "Event Details";
             var img = document.createElement("img");
             img.src = (response._embedded.events[j].images[0].url);
@@ -253,8 +259,6 @@ function test5() {
         document.querySelector('#eventHeader').textContent = "Results for  " + keyword;
         for (var j = 0; j < 19; j++) {
 
-
-            console.log(response);
             var div = document.createElement('div');
             div.setAttribute('class', "divider");
             var div2 = document.createElement('div');
@@ -269,11 +273,12 @@ function test5() {
             p.setAttribute('id', 'eventDetails');
             var button = document.createElement('button');
             button.setAttribute('class', 'buttonID');
+            button.setAttribute('data-dest',response._embedded.events[j]._embedded.venues[0].name);
+            button.setAttribute('data-url', response._embedded.events[j].url);
+            button.setAttribute('data-image',response._embedded.events[j].images[0].url);
             button.textContent = "Event Details";
             var img = document.createElement("img");
             img.src = (response._embedded.events[j].images[0].url);
-
-
 
             document.querySelector(".list").appendChild(div).parentNode.appendChild(section).appendChild(div3).appendChild(h5).parentNode.appendChild(p).parentNode.appendChild(button).parentNode.parentNode.appendChild(div2).appendChild(img)
 
@@ -285,13 +290,18 @@ function test5() {
 $(document).on("click", ".buttonID", function (event) {
     console.log("click");
     event.preventDefault();
-    location.href = "../envent_P.html"
+    location.href = "../event_details.html";
     destination =$(this).attr('data-dest');
     ticketUrl = $(this).attr('data-url');
+    image = $(this).attr('data-image');
+    localStorage.setItem('im',image);
     localStorage.setItem('ticketUrl',ticketUrl);
     localStorage.setItem('dest',destination);
+   
+
     console.log(ticketUrl);
     console.log(destination);
+    // console.log(image);
 });
 $(document).ready(function () {
     if (buyTickets) {
@@ -307,16 +317,27 @@ $(document).ready(function () {
         })
     }
 });
+
 $(document).ready(function(){
     if (getDirections ) {
         $(getDirections).on('click', function(event){
             event.preventDefault();
+            
             var d = localStorage.getItem('dest')
             $(finalDestination).attr("value", d)
             
-            // finalDestination.val(d)  ;
             console.log(finalDestination);
         })
     }
 })
 
+
+$(document).ready(function(){
+    if (imgJ) {
+        event.preventDefault();
+        var e = localStorage.getItem('im');
+        $(imgJ).attr('src',e);
+        console.log(imgJ);
+    }
+
+})

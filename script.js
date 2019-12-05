@@ -86,8 +86,8 @@ function calculateAndDisplayRoute(directionsService, directionsRenderer) {
 
 // });
 
-$(document).on("click",".buttonID", function(event){
+// $(document).on("click",".buttonID", function(event){
 
-        location.href = "../envent_P.html";
-});
+//         location.href = "../envent_P.html";
+// });
 
