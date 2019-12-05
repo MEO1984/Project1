@@ -476,6 +476,29 @@ $(document).on("click", ".buttonID", function (event) {
     console.log(destination);
     console.log(title);
 });
+
+$(document).on("click", ".buttonID2", function (event) {
+    console.log("click");
+    event.preventDefault();
+
+    title = $(this).attr('data-title');
+    localStorage.setItem('title', title);
+
+    // location.href = "directions.html"
+
+    destination = $(this).attr('data-dest');
+    ticketUrl = $(this).attr('data-url');
+    
+    localStorage.setItem('ticketUrl', ticketUrl);
+    localStorage.setItem('dest', destination);
+    
+    
+
+    console.log(ticketUrl);
+    console.log(destination);
+    console.log(title);
+});
+
 $(document).ready(function () {
     if (buyTickets) {
 
