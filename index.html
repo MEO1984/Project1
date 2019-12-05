@@ -67,10 +67,15 @@
         <div class="modal-content">
           <h4 id="pageHeader">Modal Header</h4>
           <p id="date">A bunch of text</p>
-          <p id="Price"></p>
+          <p id="price"></p>
+          <p id="city"></p>
+          <p id="vlocation"></p>
+         
+          <button id='directionBtn' target="_blank">Directions</button>
+          <button id="buytickets">Get Tickets</button>
         </div>
         <div class="modal-footer">
-          <a href="#!" class="modal-close waves-effect waves-green btn-flat">Agree</a>
+          <a href="#!" class="modal-close waves-effect waves-green btn-flat">Close</a>
         </div>
       </div>
         </div>
@@ -164,59 +169,7 @@
 
     </div>
 
-    <div class="row hidden directions">
-
-            <div class="col s2"></div>
-            <div class="col s8 center-align">
     
-    
-                <div  class="col s12 m8  eventDetails" style="width: 100%;">
-                    <div class="card"  style="width: 50%; margin: 0 auto;">
-                        <div  class="card-image">
-                            <img src="4QaEMtGcKnmhQcyKGK35JsaanTirrkiu97DUvaUt.jpeg">
-                            <span class="card-title">Event name</span>
-                        </div>
-                        <div class="card-content">
-                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Earum tenetur molestias, ratione
-                                iusto asperiores, ipsam ducimus, autem facilis rem nam perferendis eum magnam! Quod,
-                                ratione
-                                eum placeat totam ipsam numquam?</p>
-                        </div>
-                        <div class="card-action">
-                            <button id="directions" class="btn waves-effect waves-light" type="submit" name="action">Get directions
-                                <i class="material-icons right">▶️</i>
-                            </button>
-                            <br>
-                            <br>
-                            <button id="priceBtn" class="btn waves-effect light-blue darken-1 btn_price" type="submit"
-                                name="action">Price Range
-                                <i class="material-icons right">💵</i>
-                            </button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-    
-    
-            <div class="col s2">
-            </div>
-        </div>
-        <div class="hidden">
-        <div id="floating-panel">
-                <strong>Start:</strong>
-                <input id="start" hidden>
-                </input>
-                <br>
-                <strong>Event location:</strong>
-                <input id="end">
-            
-                </input>
-              </div>
-              <div id="right-panel"></div>
-             
-              <div id="map"></div>
-              <p id="demo"></p>
-            </div>
       
 
 
