@@ -295,7 +295,9 @@ function test5() {
             button.setAttribute('data-info', j);
             console.log("buttonclicked");
 
-
+            
+            button.setAttribute('data-dest', response._embedded.events[j]._embedded.venues[0].name);
+            button.setAttribute('data-url', response._embedded.events[j].url);
 
             // var button = document.createElement('button');
             // button.setAttribute('class', 'buttonID');
@@ -310,9 +312,8 @@ function test5() {
 
             $('#pageHeader').text(response._embedded.events[work].name);
             $('#date').text(moment(response._embedded.events[work].dates.start.localDate).format("MMM Do YYYY"));
-            $('#city').text(moment(response._embedded.events[work].dates.start.dateTime).format("LT"));
             // $('#price').text("Price: $" + response._embedded.events[work].priceRanges[0].min + " to $" + response._embedded.events[work].priceRanges[0].max);
-            // $('#city').text("City: " + city);
+            $('#city').text(moment(response._embedded.events[work].dates.start.dateTime).format("LT"));
             $('#vlocation').text(response._embedded.events[work]._embedded.venues[0].name);
 
         }
@@ -354,7 +355,7 @@ function initMap() {
         handleLocationError(false, infoWindow, map.getCenter());
     }
     directionsRenderer.setMap(map);
-    directionsRenderer.setPanel(document.getElementById('right-panel'));
+    directionsRenderer.setPanel(document.getElementById('lineDirection'));
 
     var control = document.getElementById('floating-panel');
     control.style.display = 'block';
