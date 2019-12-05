@@ -1,0 +1,248 @@
+button{
+    background: #80cbc4;
+    color: white;
+    padding: 10px;
+    font-size: 25px;   
+}
+.sport1{
+    float:left;
+    margin: 20px;
+    text-align: center;
+    width:280px;
+    font-size: 20px;
+}
+.sport2{
+    float:left;
+    margin: 20px;
+    text-align: center;
+    width: 280px;
+    font-size: 20px;
+}
+.sport3{
+    float:left;
+    margin: 20px;
+    text-align: center;
+    width:280px;
+    font-size: 20px;
+}
+.sport4{
+    float:left;
+    margin: 20px;
+    text-align: center;
+    width:280px;
+    font-size: 20px;
+}
+.sport5{
+    float:left;
+    margin: 20px;
+    text-align: center;
+    width:280px;
+    font-size: 20px;
+}
+.sport6{
+    float:left;
+    margin: 20px;
+    text-align: center;
+    width:280px;
+    font-size: 20px;
+}
+.concert1{
+    float:left;
+    margin: 20px;
+    text-align: center;
+    width:280px;
+    font-size: 20px;
+}
+.concert2{
+    float:left;
+    margin: 20px;
+    text-align: center;
+    width: 280px;
+    font-size: 20px;
+}
+.concert3{
+    float:left;
+    margin: 20px;
+    text-align: center;
+    width:280px;
+    font-size: 20px;
+}
+.concert4{
+    float:left;
+    margin: 20px;
+    text-align: center;
+    width:280px;
+    font-size: 20px;
+}
+.concert5{
+    float:left;
+    margin: 20px;
+    text-align: center;
+    width:280px;
+    font-size: 20px;
+}
+.concert6{
+    float:left;
+    margin: 20px;
+    text-align: center;
+    width:280px;
+    font-size: 20px;
+}
+
+#image{
+    float:left;
+    margin: 10px;
+}
+.header{
+   text-align:center;
+    height: 100px;
+    color:white;
+}
+ul{
+padding: 0 15px;
+    padding-top: 0px;
+    padding-right: 15px;
+    padding-bottom: 0px;
+    padding-left: 15px;
+    cursor: pointer;
+}
+nav .brand-logo {
+    /* position: absolute; */
+    color: #fff;
+    display: inline-block;
+    font-size: 2.1rem;
+    padding: 0;
+}
+.searchBar{
+    margin-bottom: 50px;
+    margin-top: 50px;
+}
+.mainmenu{
+    margin-bottom: 100px;
+    margin-top: 50px;
+}
+
+#listButtons {
+    padding:20px;
+    background: #80cbc4;
+    color: white;
+}
+.section{
+    padding-bottom: 50px;
+    /* float: left; */
+}
+section img{
+    height: 300px;
+    width: 400px;
+
+}
+h5{
+    /* float: left; */
+    padding-right: 10px;
+    padding-top: 50px;
+    padding-left: 10px;
+    /* width: 50%; */
+    text-align: center; 
+    
+}
+.buttonID{
+    margin: 0 auto;
+    margin-top: 50px;
+    margin-bottom: 20px;
+    width: 50%;
+    display: flex;
+  align-items: center;
+  justify-content: center;
+    
+}
+.hidden{
+    display: none;
+}
+
+#eventDetails{
+    text-align: center;
+}
+
+/* Always set the map height explicitly to define the size of the div
+       * element that contains the map. */
+       #map {
+        height: 40%;
+        width: 40%;
+      }
+      /* Optional: Makes the sample page fill the window. */
+      html, body {
+        height: 100%;
+        margin: 0;
+        padding: 0;
+      }
+      #priceBtn {
+      background-color: #039be5 ;
+      }
+      .eventDetails{
+        width: 100%;
+        margin: 0 auto;
+      }
+      .card-image{
+        width: 60%;
+        margin: 0 auto;
+      }
+      #floating-panel {
+        /* position: relative; */
+        top: 10px;
+        left: 25%;
+        z-index: 5;
+        background-color: #fff;
+        padding: 5px;
+        border: 1px solid #999;
+        text-align: center;
+        font-family: 'Roboto','sans-serif';
+        line-height: 30px;
+        padding-left: 10px;
+        
+      }
+      #lineDirection{
+        font-family: 'Roboto','sans-serif';
+        line-height: 30px;
+        padding-left: 10px;
+        height: 50%;
+        /* width: 50%; */
+        /* margin-right: 380px; */
+      }
+      #right-panel select, #right-panel input {
+        font-size: 15px;
+      }
+
+      #right-panel select {
+        width: 100%;
+      }
+
+      #right-panel i {
+        font-size: 12px;
+      }
+      #right-panel {
+        height: 100%;
+        float: right;
+        width: 390px;
+        overflow: auto;
+      }
+      #map {
+        position: relative;
+        margin-right: 400px;
+      }
+    
+      @media print {
+        #map {
+          height: 500px;
+          margin: 0;
+        }
+        #right-panel {
+          position: relative;
+          float: none;
+          width: auto;
+        }
+      }
+
+
+
+
+

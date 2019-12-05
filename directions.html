@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="./style.css">
+    <script src="https://code.jquery.com/jquery.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
+</head>
+
+<body>
+    
+    <div class="container">
+        <div id="floating-panel">
+            <strong></strong>
+            <input id="start" hidden>
+            </input>
+            <br>
+            <strong>Event location:</strong>
+            <input id="end">
+
+            </input>
+        </div>
+        <div class="card-action">
+            <br>
+            Click to get directions from your current location!
+            <br>
+            <br>
+            <button id="directions" class="btn waves-effect waves-light" name="action">Get directions
+                <i class="material-icons right">▶️</i>
+            </button>
+            <br>
+            <br>
+
+        </div>
+        <div id="lineDirection" class='center-align'></div>
+
+        <div id="map"></div>
+        <p id="demo"></p>
+    </div>
+
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCcXxbkJoA_-cvQs6DCxiSZ_5vbsIDuNw8&callback=initMap"
+        async defer></script>
+    <script src="script.js"></script>
+</body>
+
+</html>
